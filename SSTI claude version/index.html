@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahishmati Message Scroll</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('https://i.pinimg.com/736x/d5/97/11/d597119e8821c3544e93908795f0c70b.jpg'); /* Ancient stone texture */
+      background-size: cover;
+      background-position: center;
+    }
+    .container {
+      background-color: rgba(43, 27, 23, 0.95);  /* Dark brown background */
+      padding: 25px;
+      border-radius: 8px;
+      border: 2px solid #c9a959;  /* Gold border */
+      box-shadow: 0 0 20px rgba(201, 169, 89, 0.3);
+      width: 320px;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #c9a959;
+      font-family: 'Times New Roman', serif;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-bottom: 1px solid #c9a959;
+      padding-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #c9a959;
+      font-family: 'Times New Roman', serif;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #c9a959;
+      border-radius: 4px;
+      font-size: 14px;
+      background-color: rgba(43, 27, 23, 0.7);
+      color: #c9a959;
+      font-family: 'Times New Roman', serif;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: rgba(201, 169, 89, 0.2);
+      color: #c9a959;
+      border: 1px solid #c9a959;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: 'Times New Roman', serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: rgba(201, 169, 89, 0.3);
+      box-shadow: 0 0 10px rgba(201, 169, 89, 0.3);
+    }
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #c9a959;
+      border-radius: 4px;
+      font-family: 'Times New Roman', serif;
+      color: #c9a959;
+      background-color: rgba(43, 27, 23, 0.7);
+      word-wrap: break-word;
+      min-height: 20px;
+      position: relative;
+    }
+    .result::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 1px solid rgba(201, 169, 89, 0.3);
+      border-radius: 6px;
+      pointer-events: none;
+    }
+    .hint {
+      font-size: 0.9em;
+      color: #a88c48;
+      margin-top: 10px;
+      font-style: italic;
+    }
+    .preset-btn {
+      background: none;
+      border: none;
+      color: #c9a959;
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 2px;
+      margin: 2px;
+      font-size: 0.9em;
+      font-style: italic;
+    }
+    .preset-btn:hover {
+      color: #d4b974;
+      background: none;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Mahishmati Scroll</h2>
+    <label for="name">Noble's Name:</label>
+    <input type="text" id="name" placeholder="Enter thy name" required>
+    <label for="message">Royal Decree:</label>
+    <input type="text" id="message" placeholder="Enter thy message" required>
+    <div class="hint">
+      Royal Templates: 
+      <button class="preset-btn" onclick="setTemplate('Hail, ${name}!')">Greeting</button>
+      <button class="preset-btn" onclick="setTemplate('Welcome to Mahishmati, ${name}')">Welcome</button>
+      <button class="preset-btn" onclick="setTemplate('By the grace of Mahishmati, ${name}')">Blessing</button>
+    </div>
+    <button onclick="generateGreeting()">Seal The Decree</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function setTemplate(template) {
+      document.getElementById('message').value = template;
+    }
+
+    async function generateGreeting() {
+      const name = document.getElementById('name').value;
+      const message = document.getElementById('message').value;
+
+      if (!name || !message) {
+        alert('Both name and decree are required by royal command.');
+        return;
+      }
+
+      try {
+        const response = await fetch('/greet', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name, message }),
+        });
+
+        const data = await response.json();
+        if (data.greeting !== undefined) {
+          document.getElementById('result').innerText = data.greeting;
+        } else {
+          document.getElementById('result').innerText = 'The royal scribe encountered an error';
+        }
+      } catch (error) {
+        document.getElementById('result').innerText = 'A messenger has failed to deliver the decree';
+      }
+    }
+  </script>
+</body>
+</html>
