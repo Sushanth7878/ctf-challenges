@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darling</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            background: url('https://sund-images.sunnxt.com/27774/1920x1080_bda889cb-0a68-4620-8cc1-2a3c4a2eb589.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 1;
+        }
+        .movie-card {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #4ECDC4;
+            backdrop-filter: blur(10px);
+        }
+        h1 { 
+            color: #FFD700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        p { 
+            color: #ffffff;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="movie-card">
+        <h1>Darling (2010)</h1>
+        <p>"Darling" marked the beginning of a golden era. But what came next in this journey?</p>
+        <p>A romantic entertainer that won hearts... Keep exploring Prabhas' filmography!</p>
+    </div>
+</body>
+</html>
