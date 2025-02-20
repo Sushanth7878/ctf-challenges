@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burra Katha Terminal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .title-box {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            padding: 2px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .title-content {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #FFD700;
+            font-size: 2em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            color: #4ECDC4;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .terminal-box {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #4ECDC4;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.2);
+        }
+
+        .directory-info {
+            color: #FF6B6B;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .command-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border: 1px solid #4ECDC4;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #4ECDC4, #2EAF7D);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        pre {
+            text-align: left;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #4ECDC4;
+            padding: 15px;
+            border-radius: 5px;
+            height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+        }
+
+        /* Custom scrollbar */
+        pre::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        pre::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        pre::-webkit-scrollbar-thumb {
+            background: #4ECDC4;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title-box">
+            <div class="title-content">
+                <h2>Burra Katha Terminal</h2>
+                <div class="subtitle">Director's Secret Console</div>
+            </div>
+        </div>
+        
+        <div class="terminal-box">
+            <div class="directory-info">
+                🎬 Working Directory: <span id="currentDir">/home/ctf</span>
+            </div>
+            
+            <div class="command-input">
+                <input type="text" id="command" placeholder="Type your command here..." autocomplete="off">
+                <button id="execute">Execute</button>
+            </div>
+            
+            <pre id="output">Welcome to the Director's Terminal!
+Try commands like 'ls' or 'pwd' to get started...
+            </pre>
+        </div>
+    </div>
+
+    <script src="../static/script.js"></script>
+</body>
+</html>
